@@ -1,0 +1,75 @@
+{
+    "name": "AMPATH POC Cardex Form v1.0",
+    "uuid": "xxxx",
+    "processor": "EncounterFormProcessor",
+    "pages": [
+      {
+        "label": "Encounter Details",
+        "sections": [
+          {
+            "label": "Encounter Details",
+            "isExpanded": "true",
+            "questions": [
+              {
+                "label": "Visit date",
+                "type": "encounterDatetime",
+                "required": "true",
+                "default": "",
+                "id": "encDate",
+                "questionOptions": {
+                  "rendering": "date"
+                },
+                "validators": [
+                  {
+                    "type": "date"
+                  }
+                ]
+              },
+              {
+                "type": "encounterProvider",
+                "label": "Provider",
+                "id": "provider",
+                "required": "true",
+                "default": "",
+                "questionOptions": {
+                  "rendering": "ui-select-extended"
+                }
+              },
+              {
+                "type": "encounterLocation",
+                "label": "Facility name (site/satellite clinic required):",
+                "id": "location",
+                "required": "true",
+                "questionOptions": {
+                  "rendering": "ui-select-extended"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "label": "Cardex",
+        "sections": [
+          {
+            "label": "Nursing Notes",
+            "isExpanded": "true",
+            "questions": [
+              {
+                "label": "Add nursing notes:",
+                "type": "obs",
+                "id": "assNote",
+                "required": "false",
+                "default": "",
+                "questionOptions": {
+                  "concept": "23f710cc-7f9c-4255-9b6b-c3e240215dba",
+                  "rendering": "textarea",
+                  "rows": 10
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }

@@ -1,6 +1,12 @@
 {
     "name": "AMPATH POC Cardex Form v1.0",
     "uuid": "xxxx",
+    "version": "1.0",
+    "description": "Cardex information",
+    "published": true,
+    "retired": false,
+    "encounterType": "64e0f9f4-5f25-4098-bbca-ba8db6ce1696",
+    "encounter": "NURSINGNOTES",
     "processor": "EncounterFormProcessor",
     "pages": [
       {

@@ -1,229 +1,233 @@
 {
-    "name": "POC OPD Triage Encounter Form v1.0",
-    "uuid": "xxxx",
-    "processor": "EncounterFormProcessor",
-    "pages": [
+  "name": "POC OPD Triage Encounter Form v1.0",
+  "uuid": "xxxx",
+  "published": true,
+  "retired": false,
+  "encounterType": "8a43b09b-2d9f-487c-a1c3-d6bf220671a7",
+  "description": "OPD Triage information",
+  "version": "1.0",
+  "encounter": "OPDTRIAGE",
+  "processor": "EncounterFormProcessor",
+  "pages": [
     {
-        "label": "Encounter Details",
-        "sections": [
-          {
-            "label": "Encounter Details",
-            "isExpanded": "true",
-            "questions": [
-              {
-                "label": "Visit date",
-                "type": "encounterDatetime",
-                "required": "true",
-                "default": "",
-                "id": "encDate",
-                "questionOptions": {
-                  "rendering": "date"
-                },
-                "validators": [
-                  {
-                    "type": "date"
-                  }
-                ]
+      "label": "Encounter Details",
+      "sections": [
+        {
+          "label": "Encounter Details",
+          "isExpanded": "true",
+          "questions": [
+            {
+              "label": "Visit date",
+              "type": "encounterDatetime",
+              "required": "true",
+              "default": "",
+              "id": "encDate",
+              "questionOptions": {
+                "rendering": "date"
               },
-              {
-                "type": "encounterProvider",
-                "label": "Provider",
-                "id": "provider",
-                "required": "true",
-                "default": "",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
+              "validators": [
+                {
+                  "type": "date"
                 }
+              ]
+            },
+            {
+              "type": "encounterProvider",
+              "label": "Provider",
+              "id": "provider",
+              "required": "true",
+              "default": "",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            },
+            {
+              "type": "encounterLocation",
+              "label": "Facility name (site/satellite clinic required):",
+              "id": "location",
+              "required": "true",
+              "questionOptions": {
+                "rendering": "ui-select-extended"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Vitals",
+      "sections": [
+        {
+          "label": "Vital Signs",
+          "questions": [
+            {
+              "type": "obsGroup",
+              "label": "test group",
+              "questionOptions": {
+                "rendering": "group",
+                "concept": "a899e6d8-1350-11df-a1f1-0026b9348838"
               },
-              {
-                "type": "encounterLocation",
-                "label": "Facility name (site/satellite clinic required):",
-                "id": "location",
-                "required": "true",
-                "questionOptions": {
-                  "rendering": "ui-select-extended"
-                }
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "label": "Vitals",
-        "sections": [
-          {
-            "label": "Vital Signs",
-            "questions": [
-              {
-                "type": "obsGroup",
-                "label": "test group",
-                "questionOptions": {
-                  "rendering": "group",
-                  "concept": "a899e6d8-1350-11df-a1f1-0026b9348838"
+              "questions": [
+                {
+                  "label": "Temperature(C):",
+                  "questionOptions": {
+                    "rendering": "decimal",
+                    "concept": "a8a65fee-1350-11df-a1f1-0026b9348838"
+                  },
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 1
+                    }
+                  ],
+                  "id": "temp",
+                  "alerts": [
+                    {
+                      "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 0 && <= 36.4))",
+                      "message": "Low Temperature"
+                    },
+                    {
+                      "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 36.5 && <= 37.5))",
+                      "message": "Normal Temperature"
+                    },
+                    {
+                      "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 37.6))",
+                      "message": "High Temperature"
+                    }
+                  ]
                 },
-                "questions": [
-                  {
-                    "label": "Temperature(C):",
-                    "questionOptions": {
-                      "rendering": "decimal",
-                      "concept": "a8a65fee-1350-11df-a1f1-0026b9348838"
-                    },
-                    "type": "obs",
-                    "validators": [
-                      {
-                        "type": "decimal",
-                        "decimalPlace": 1
-                      }
-                    ],
-                    "id": "temp",
-                    "alerts": [
-                      {
-                        "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 0 && <= 36.4))",
-                        "message": "Low Temperature"
-                      },
-                      {
-                        "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 36.5 && <= 37.5))",
-                        "message": "Normal Temperature"
-                      },
-                      {
-                        "alertWhenExpression": "!isEmpty(myValue) && !isEmpty(temp) && ((myValue >= 37.6))",
-                        "message": "High Temperature"
-                      }
-                    ]
+                {
+                  "label": "Pulse(Rate/Min):",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
+                    "max": "230",
+                    "min": "0"
                   },
-                  {
-                    "label": "Pulse(Rate/Min):",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a8a65f12-1350-11df-a1f1-0026b9348838",
-                      "max": "230",
-                      "min": "0"
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "id": "pulse"
+                  "type": "obs",
+                  "validators": [],
+                  "id": "pulse"
+                },
+                {
+                  "label": "Systolic blood pressure:",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
+                    "max": "250",
+                    "min": "0"
                   },
-                  {
-                    "label": "Systolic blood pressure:",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a8a65d5a-1350-11df-a1f1-0026b9348838",
-                      "max": "250",
-                      "min": "0"
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "id": "syst"
+                  "type": "obs",
+                  "validators": [],
+                  "id": "syst"
+                },
+                {
+                  "label": "Diastolic blood pressure:",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
+                    "max": "200",
+                    "min": "0"
                   },
-                  {
-                    "label": "Diastolic blood pressure:",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a8a65e36-1350-11df-a1f1-0026b9348838",
-                      "max": "200",
-                      "min": "0"
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "id": "diast"
+                  "type": "obs",
+                  "validators": [],
+                  "id": "diast"
+                },
+                {
+                  "label": "Oxygen saturation:",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
+                    "max": "100",
+                    "min": "0"
                   },
-                  {
-                    "label": "Oxygen saturation:",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a8a66354-1350-11df-a1f1-0026b9348838",
-                      "max": "100",
-                      "min": "0"
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "id": "saturation"
+                  "type": "obs",
+                  "validators": [],
+                  "id": "saturation"
+                },
+                {
+                  "label": "Respiratory rate(Breath/Min):",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
+                    "max": "99",
+                    "min": "0"
                   },
-                  {
-                    "label": "Respiratory rate(Breath/Min):",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a8a6f71a-1350-11df-a1f1-0026b9348838",
-                      "max": "99",
-                      "min": "0"
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "id": "resp"
+                  "type": "obs",
+                  "validators": [],
+                  "id": "resp"
+                },
+                {
+                  "label": "MUAC:MM",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
+                    "max": "450",
+                    "min": "60"
                   },
-                  {
-                    "label": "MUAC:MM",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a89c6188-1350-11df-a1f1-0026b9348838",
-                      "max": "450",
-                      "min": "60"
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "id": "muac"
+                  "type": "obs",
+                  "validators": [],
+                  "id": "muac"
+                },
+                {
+                  "label": "Weight(Kg):",
+                  "id": "weight",
+                  "questionOptions": {
+                    "rendering": "decimal",
+                    "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
+                    "max": "250",
+                    "min": "0"
                   },
-                  {
-                    "label": "Weight(Kg):",
-                    "id": "weight",
-                    "questionOptions": {
-                      "rendering": "decimal",
-                      "concept": "a8a660ca-1350-11df-a1f1-0026b9348838",
-                      "max": "250",
-                      "min": "0"
-                    },
-                    "type": "obs",
-                    "validators": [
-                      {
-                        "type": "decimal",
-                        "decimalPlace": 1
-                      }
-                    ]
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 1
+                    }
+                  ]
+                },
+                {
+                  "label": "Height(CM):",
+                  "id": "height",
+                  "historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
+                  "questionOptions": {
+                    "rendering": "decimal",
+                    "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
+                    "max": "228.00",
+                    "min": "10.00"
                   },
-                  {
-                    "label": "Height(CM):",
-                    "id": "height",
-                    "historicalExpression": "(HD.getObject('prevEnc').getValue('a8a6619c-1350-11df-a1f1-0026b9348838'))",
-                    "questionOptions": {
-                      "rendering": "decimal",
-                      "concept": "a8a6619c-1350-11df-a1f1-0026b9348838",
-                      "max": "228.00",
-                      "min": "10.00"
-                    },
-                    "type": "obs",
-                    "validators": [
-                      {
-                        "type": "decimal",
-                        "decimalPlace": 1
-                      }
-                    ]
+                  "type": "obs",
+                  "validators": [
+                    {
+                      "type": "decimal",
+                      "decimalPlace": 1
+                    }
+                  ]
+                },
+                {
+                  "label": "BMI:Kg/M2",
+                  "questionOptions": {
+                    "rendering": "number",
+                    "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
+                    "max": "100",
+                    "min": "0",
+                    "calculate": {
+                      "calculateExpression": "calcBMI(height,weight)"
+                    }
                   },
-                  {
-                    "label": "BMI:Kg/M2",
-                    "questionOptions": {
-                      "rendering": "number",
-                      "concept": "a89c60c0-1350-11df-a1f1-0026b9348838",
-                      "max": "100",
-                      "min": "0",
-                      "calculate": {
-                        "calculateExpression": "calcBMI(height,weight)"
-                      }
-                    },
-                    "type": "obs",
-                    "validators": [],
-                    "hide": {
-                      "hideWhenExpression": "age<18"
-                    },
-                    "id": "bmi"
-                  }
-                ],
-                "id": "vitals"
-              }
-            ]
-          }
-        ]
-      }
-      
-    ]
-  }
-  
+                  "type": "obs",
+                  "validators": [],
+                  "hide": {
+                    "hideWhenExpression": "age<18"
+                  },
+                  "id": "bmi"
+                }
+              ],
+              "id": "vitals"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

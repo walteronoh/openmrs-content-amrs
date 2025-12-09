@@ -2,9 +2,10 @@
     "name": "AMPATH POC Clinical Encounter Form v1.0",
     "description": "Clinical Encounter",
     "version": "1.0",
-  
     "uuid": "070b40ea-60ea-4024-946c-7544718ca0f1",
-  
+    "published": true,
+    "retired": false, 
+    "encounterType": "81166f83-1ee6-486e-8f56-aca528fc0fc0",
     "encounter": "GENCONSULTATION",
     "pages": [
       {

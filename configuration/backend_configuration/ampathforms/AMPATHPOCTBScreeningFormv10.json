@@ -1,7 +1,13 @@
 {
     "name": "AMPATH POC TB Screening Form v1.0",
     "uuid": "xxxx",
+    "version": "1.0",
+    "description": "TB Screening information",
+    "published": true,
+    "retired": false,
     "processor": "EncounterFormProcessor",
+    "encounterType": "e47b6229-cfb8-446f-a51c-194a28e465d5",
+    "encounter": "TBSCREENING",
     "pages": [
       {
         "label": "Encounter Details",

@@ -1,5 +1,5 @@
 Uuid,Void/Retire,Name,Description,View privilege,Edit privilege,display:en,_order:1000
-64e0f9f4-5f25-4098-bbca-ba8db6ce1696,,AMPATH POC Cardex,Cardex information for nursing notes,,,AMPATH POC Cardex,
-81166f83-1ee6-486e-8f56-aca528fc0fc0,,AMPATH POC Clinical Encounter,Clinical Encounter for general consultation,,,AMPATH POC Clinical Encounter,
-e47b6229-cfb8-446f-a51c-194a28e465d5,,AMPATH POC TB Screening,TB Screening information,,,AMPATH POC TB Screening,
-8a43b09b-2d9f-487c-a1c3-d6bf220671a7,,POC OPD Triage,OPD Triage information for vital signs and initial assessment,,,POC OPD Triage,
+64e0f9f4-5f25-4098-bbca-ba8db6ce1696,,NURSINGNOTES,Cardex information for nursing notes,,,AMPATH POC Cardex,
+81166f83-1ee6-486e-8f56-aca528fc0fc0,,GENCONSULTATION,Clinical Encounter for general consultation,,,AMPATH POC Clinical Encounter,
+e47b6229-cfb8-446f-a51c-194a28e465d5,,TBSCREENING,TB Screening information,,,AMPATH POC TB Screening,
+8a43b09b-2d9f-487c-a1c3-d6bf220671a7,,OPDTRIAGE,OPD Triage information for vital signs and initial assessment,,,POC OPD Triage,

@@ -1,0 +1,2 @@
+Uuid,Void/Retire,Name,Description,Minoccurs,Maxoccurs,Datatypeclassname,Datatypeconfig,Preferredhandlerclassname,Handlerconfig
+bf4ef9a1-1203-462d-9be1-52243557dcb6,,Email,Email Attribute,1,1,org.openmrs.customdatatype.datatype.FreeTextDatatype,,,
